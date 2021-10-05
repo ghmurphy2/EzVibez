@@ -12,9 +12,11 @@
     font-size: 0.8rem;
     justify-content: center;
   }
-  .container {
+
+  #container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      flex-direction: row;
   }
