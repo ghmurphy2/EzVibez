@@ -1,9 +1,20 @@
-.input-group-field {
-      border-radius: 5000px 0 0 5000px;
-      padding-left: 1rem;
-    }
+.input-group-rounded .input-group-field {
+    border-radius: 500px 0 0 500px;
+    padding-left: 1rem;
+    max-width: 50%;
+    justify-content: center;
+  }
   
-    .input-group-button .button {
-      border-radius:  0 5000px 5000px 0;
-      font-size: 0.8rem;
-    }
+  .input-group-rounded .input-group-button .button {
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-radius: 0 500px 500px 0;
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+  }
