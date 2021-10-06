@@ -1,79 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>EzVibez</title>
-</head>
-<body>
-    <!-- <div class="top-bar">
-        <div class="top-bar-left" id="top">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">EzVibez</li>
-          </ul>
-        </div>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EzVibez | Find lyrics, mood, and recommendations</title>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+  </head>
+  <body>
+
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">EzVibez</li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout large">
+      <div class="row column text-center">
+        <h1>Changing the World Through Design</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+        <div class="input-group input-group-rounded">
+            <input class="input-group-field" type="search">
+            <div class="input-group-button">
+              <input type="submit" class="button secondary" value="Search">
+            </div>
+          </div>          
+      </div>
     </div>
 
-    <div class="input-group input-group-rounded">
-        <input class="input-group-field" type="search">
-        <div class="input-group-button">
-          <input type="submit" class="button secondary" value="Search">
-        </div>
-    </div> -->
+    <div class="row">
+      <div class="medium-4 columns medium-pull-6">
+        <h2>Lyrics</h2>
+        <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor.</p>
+      </div>
+    </div>
 
-    <h3>Search By Song</h3>
-    <form id="search-form">
-        <label for="search-text">Lookup a song</label>
-        <input name="search-text" id="search-text" type="text" autofocus="true" class="form-input" />
-        <button type="submit" class="btn">Search</button>
-    </form>
 
-    <button id="togglePlay">Toggle Play</button>
 
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <!-- <script>
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = 'BQBHaTm5bQ32dT59Z_T21hjzfZ2kcOA8bha-KGuPrq9rbR0ttC48vqNkcseRdM3L18fpEWbEQ0UMBsA7OSl89f4Hdiqrv6WCy1ydlUl55M5ebyR2u4idk_YhLTYB0-8PE6tTtq_AwIemRozPjiInkkuRhfXIga_HxYH3';
-            const player = new Spotify.Player({
-                name: 'EzVibez',
-                getOAuthToken: cb => { cb(token); },
-                volume: 0.5
-            });
+    <hr>
 
-            // Ready
-            player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
-            });
+    <div class="row column">
+      <ul class="vertical medium-horizontal menu expanded text-center">
+        <li><a href="#"><div class="stat">28</div><span>Websites</span></a></li>
+        <li><a href="#"><div class="stat">43</div><span>Apps</span></a></li>
+        <li><a href="#"><div class="stat">95</div><span>Ads</span></a></li>
+        <li><a href="#"><div class="stat">59</div><span>Cakes</span></a></li>
+        <li><a href="#"><div class="stat">18</div><span>Logos</span></a></li>
+      </ul>
+    </div>
 
-            // Not Ready
-            player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
-            });
+    <hr>
 
-            player.addListener('initialization_error', ({ message }) => {
-                console.error(message);
-            });
+    <div class="row column">
+      <h3>Recommendations</h3>
+    </div>
 
-            player.addListener('authentication_error', ({ message }) => {
-                console.error(message);
-            });
+    <div class="row medium-up-3 large-up-4">
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="https://placehold.it/550x550">
+      </div>
+    </div>
 
-            player.addListener('account_error', ({ message }) => {
-                console.error(message);
-            });
+    <hr>
 
-            document.getElementById('togglePlay').onclick = function() {
-              player.togglePlay();
-            };
-
-            player.connect();
-        }
-    </script> -->
-      
-
-    <script src="./assets/js/script.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src = ./assets/script.js></script>
+  </body>
 </html>
