@@ -4,11 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>EzVibez</title>
 </head>
 <body>
-    
+    <!-- <div class="top-bar">
+        <div class="top-bar-left" id="top">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">EzVibez</li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="input-group input-group-rounded">
+        <input class="input-group-field" type="search">
+        <div class="input-group-button">
+          <input type="submit" class="button secondary" value="Search">
+        </div>
+    </div> -->
+
+    <button id="togglePlay">Toggle Play</button>
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = 'BQBHaTm5bQ32dT59Z_T21hjzfZ2kcOA8bha-KGuPrq9rbR0ttC48vqNkcseRdM3L18fpEWbEQ0UMBsA7OSl89f4Hdiqrv6WCy1ydlUl55M5ebyR2u4idk_YhLTYB0-8PE6tTtq_AwIemRozPjiInkkuRhfXIga_HxYH3';
+            const player = new Spotify.Player({
+                name: 'EzVibez',
+                getOAuthToken: cb => { cb(token); },
+                volume: 0.5
+            });
+
+            // Ready
+            player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
+            });
+
+            // Not Ready
+            player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
+
+            player.addListener('initialization_error', ({ message }) => {
+                console.error(message);
+            });
+
+            player.addListener('authentication_error', ({ message }) => {
+                console.error(message);
+            });
+
+            player.addListener('account_error', ({ message }) => {
+                console.error(message);
+            });
+
+            document.getElementById('togglePlay').onclick = function() {
+              player.togglePlay();
+            };
+
+            player.connect();
+        }
+    </script>
+      
+
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
