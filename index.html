@@ -24,10 +24,17 @@
         </div>
     </div> -->
 
+    <h3>Search By Song</h3>
+    <form id="search-form">
+        <label for="search-text">Lookup a song</label>
+        <input name="search-text" id="search-text" type="text" autofocus="true" class="form-input" />
+        <button type="submit" class="btn">Search</button>
+    </form>
+
     <button id="togglePlay">Toggle Play</button>
 
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script>
+    <!-- <script>
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = 'BQBHaTm5bQ32dT59Z_T21hjzfZ2kcOA8bha-KGuPrq9rbR0ttC48vqNkcseRdM3L18fpEWbEQ0UMBsA7OSl89f4Hdiqrv6WCy1ydlUl55M5ebyR2u4idk_YhLTYB0-8PE6tTtq_AwIemRozPjiInkkuRhfXIga_HxYH3';
             const player = new Spotify.Player({
@@ -64,7 +71,7 @@
 
             player.connect();
         }
-    </script>
+    </script> -->
       
 
     <script src="./assets/js/script.js"></script>
