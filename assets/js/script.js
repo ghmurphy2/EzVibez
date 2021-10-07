@@ -5,6 +5,7 @@ const result = document.getElementById("result");
 // const recommended = document.getElementById("recs")
 const recommended = $("#recs");
 
+
 // API URL
 const apiURL = "https://api.lyrics.ovh";
 
@@ -22,6 +23,7 @@ form.addEventListener("submit", e => {
         // or else I want to begin search
     } else {
         beginSearch(searchValue);
+        // getRecommendations(searchValue);
     }
 })
 
@@ -90,9 +92,36 @@ async function getLyrics(artist, songTitle) {
     // display lyrics to the 
     result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
     <p>${lyrics}</p>`;
-  
+
     getRecommendations(artist);
 }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+    getRecommendations(artist);
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
 // Populate recommendation section
 var getRecommendations = function (search) {
@@ -126,8 +155,6 @@ var getRecommendations = function (search) {
         }
     });
 }
-
-
 
 
 

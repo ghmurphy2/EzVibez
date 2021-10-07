@@ -16,7 +16,18 @@
           <li class="menu-text">EzVibez</li> <!--LOGO-->
         </ul>
       </div>
-    </div>
+      <div class="top-bar-right">
+        <button id="myBtn">History</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times</span>
+          <p> </p>
+        </div>
+        </div>
+      </div>
+  </div>
     <!-- End Top Bar -->
 
     <div class="callout large">
@@ -26,7 +37,7 @@
         <div class="input-group input-group-rounded">
           <form id="form"  autocomplete="off">
             <input type="text" id="search"  placeholder="Search artist or song">
-            <button>Search</button>
+            <button id="searchBtn">Search</button>
           <form>
           </div>          
       </div>
@@ -91,9 +102,7 @@
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+ 
     <script src = ./assets/js/script.js></script>
   </body>
 </html>
