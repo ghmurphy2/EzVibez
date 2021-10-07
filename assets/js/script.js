@@ -6,7 +6,22 @@ const result = document.getElementById("result");
 // API URL
 const apiURL = "https://api.lyrics.ovh";
 
+// Get Search Value
+// add an eventlistener, so everytime the search button is clicked without a value, it will send out an alert to add a value
+form.addEventListener("submit", e => {
+    //  prevent default to prevent from reloading
+    e.preventDefault();
+    // to remove white space from ends of a string
+    searchValue = search.value.trim();
 
+    if (!searchValue) { 
+        // cant use alerts 
+        alert("Enter an artist or song");
+        // or else I want to begin search
+    } else {
+        beginSearch(searchValue);
+    }
+})
 
 
 
