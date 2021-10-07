@@ -2,6 +2,8 @@
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const result = document.getElementById("result");
+// const recommended = document.getElementById("recs")
+const recommended = $("#recs");
 
 // API URL
 const apiURL = "https://api.lyrics.ovh";
@@ -89,6 +91,7 @@ async function getLyrics(artist, songTitle) {
     result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
     <p>${lyrics}</p>`;
   
+    getRecommendations(artist);
   }
 
 var getRecommendations = function (search) {
@@ -106,12 +109,10 @@ var getRecommendations = function (search) {
         // jsonpCallback: 'jsonp_callback',
         // contentType: 'application/json'
     }).then(function (res) {
-        console.log("results", res.Similar.Results);
+        console.log("results", res.Similar.Results[0].Name);
         for (let i = 0; i < 8; i++) {
-            var rec = $("<div></div>", {
-                "class": "column"
-            }).text(res.Similar.Results[i].name)
-            console.log(rec);
+            var rec = $("<div></div>").addClass("column").text(res.Similar.Results[i].Name);
+            recommended.append(rec);
         }
     });
 }
