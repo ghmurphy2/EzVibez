@@ -91,7 +91,30 @@ async function getLyrics(artist, songTitle) {
   
   }
 
-
+var getRecommendations = function (search) {
+    var key = "425157-EzVibez-ON3O5RLK";
+    var url = "https://tastedive.com/api/similar";
+    $.ajax({
+        type: "GET",
+        data: {
+            k: key,
+            q: search,
+            type: "music"
+        },
+        url: url,
+        dataType: "jsonp",
+        // jsonpCallback: 'jsonp_callback',
+        // contentType: 'application/json'
+    }).then(function (res) {
+        console.log("results", res.Similar.Results);
+        for (let i = 0; i < 8; i++) {
+            var rec = $("<div></div>", {
+                "class": "column"
+            }).text(res.Similar.Results[i].name)
+            console.log(rec);
+        }
+    });
+}
 
 
 
