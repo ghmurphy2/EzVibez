@@ -1,7 +1,7 @@
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const result = document.getElementById("result");
-const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372"
+const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372&text="
 // API URL
 const apiURL = "https://api.lyrics.ovh";
 
@@ -32,7 +32,7 @@ async function beginSearch(searchValue) {
     const data = await searchResult.json();
     // console.log(data);
     displayData(data);
-    getMood();
+    getMood()
 }
 
 // Display Search Result - DisplayData function
@@ -91,12 +91,25 @@ async function getLyrics(artist, songTitle) {
     // saveLyrics()
   }
 function getMood(){
-    const lyricsEl = ${lyrics}
-    const moodEl = fetch(`${meaningApi}+${lyricsEl}`)
-
+    const lyricsEl = $('#lyrics')
+    const moodEl = fetch(`${meaningApi}${lyricsEl}`)
+    const moodData = 
         console.log(moodEl)};
+        
+        if{
 
-//   function saveLyrics(){
+        }
+
+
+//   score_tag
+// Polarity of the element it refers to: 
+// P+: strong positive
+// P: positive
+// NEU: neutral
+// N: negative
+// N+: strong negative
+// NONE: without polarity
+// //   function saveLyrics(){
 //     const lyrics = lyricsEl.text
 //     let highScores = JSON.parse(localStorage.getItem("lyrics")) || [];
 //     let newLyrics = { 
