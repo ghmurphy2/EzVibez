@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* added transparent background */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%; 
+    height: 100%;
+    width: 900px;
+    z-index: -1;
+}
