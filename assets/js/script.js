@@ -1,3 +1,21 @@
+var request = new XMLHttpRequest();
+
+// request.open('GET', "https://api.lyrics.ovh/v1/Drake/God's Plan");
+
+// request.onreadystatechange = function () {
+//   if (this.readyState === 4) {
+//     console.log('Status:', this.status);
+//     console.log('Headers:', this.getAllResponseHeaders());
+//     console.log('Body:', this.responseText);
+//   }
+// };
+
+// request.send();
+
+// 425157-EzVibez-ON3O5RLK
+
+// https://tastedive.com/api/similar?q=red+hot+chili+peppers%2C+pulp+fiction
+=======
 // EzVibez is an app that allows user to look up a song(based on parameters) and view the lyrics and a brief analysis of the lyrics based on sentiment
 // layout will be multi paged with a landing page that contians a search 
 // possible song play back spotify or shazam
@@ -26,5 +44,3 @@
     //query lyrics
         // query sentiment
             // set mood 
-
-// 
