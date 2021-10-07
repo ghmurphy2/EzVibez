@@ -23,6 +23,18 @@ form.addEventListener("submit", e => {
     }
 })
 
+// An async function is a function declared with the async keyword, and the await keyword is permitted within them. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+// Search function 
+
+async function beginSearch(searchValue) {
+    // fetch the results using the api URL 
+    const searchResult = await fetch(`${apiURL}/suggest/${searchValue}`);
+    // we are suppose to get the data from API in json format
+    const data = await searchResult.json();
+    // console.log(data);
+    displayData(data);
+}
+
 
 
 
