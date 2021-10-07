@@ -92,11 +92,12 @@ async function getLyrics(artist, songTitle) {
     <p>${lyrics}</p>`;
   
     getRecommendations(artist);
-  }
+}
 
+// Populate recommendation section
 var getRecommendations = function (search) {
-    var key = "425157-EzVibez-ON3O5RLK";
-    var url = "https://tastedive.com/api/similar";
+    var key = "425157-EzVibez-ON3O5RLK"; // our tastedive api key
+    var url = "https://tastedive.com/api/similar"; // base url
     $.ajax({
         type: "GET",
         data: {
@@ -109,13 +110,23 @@ var getRecommendations = function (search) {
         // jsonpCallback: 'jsonp_callback',
         // contentType: 'application/json'
     }).then(function (res) {
-        console.log("results", res.Similar.Results[0].Name);
+        // console.log("results", res.Similar.Results[0].Name);
+        recommended.append('<h4>Check out these similar artists!</h4>');
+
+        // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
+        // to conduct a new search
         for (let i = 0; i < 8; i++) {
-            var rec = $("<div></div>").addClass("column").text(res.Similar.Results[i].Name);
+            var rec = $("<button></button>").addClass("column").text(res.Similar.Results[i].Name).css("padding", "5px");
+            rec.on('click', function() {
+                    var artist = $(this).text();
+                    // console.log(artist, typeof(artist));
+                    beginSearch(artist);
+            });
             recommended.append(rec);
         }
     });
 }
+
 
 
 
