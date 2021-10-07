@@ -20,6 +20,7 @@ form.addEventListener("submit", e => {
         // or else I want to begin search
     } else {
         beginSearch(searchValue);
+        // getRecommendations(searchValue);
     }
 })
 
@@ -88,10 +89,36 @@ async function getLyrics(artist, songTitle) {
     // display lyrics to the 
     result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
     <p>${lyrics}</p>`;
-  
-  }
 
+    getRecommendations(artist);
+}
 
+// async function getRecommendations(artist) {
+//     const apikey = "?k=425157-EzVibez-ON3O5RLK"
+//     const apiUrl = "https://tastedive.com/api/similar?q="
+//     const response = await fetch(`${apiUrl}${artist}${apikey}`, {mode: 'no-cors'});
+//     const data = await response.json();
+
+//     console.log(response);
+//     console.log("------------")
+//     console.log(data);
+// }
+
+function getRecommendations(artist) {
+    const apikey = "&k=425157-EzVibez-ON3O5RLK";
+    var url = "https://tastedive.com/api/similar?q=" + artist + apikey;
+
+    fetch(url, {mode: 'cors'}).then(function (response) {
+        console.log(response);
+        response.json().then(function (data) {
+            for (let i = 0; i < 8; i++) {
+                $( "<div></div>", {
+                    "class": "column"
+                }).appendTo("#recs");
+            }
+        });
+    });
+}
 
 
 
