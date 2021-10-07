@@ -13,3 +13,47 @@ body::after {
     width: 900px;
     z-index: -1;
 }
+
+/* styled the form input and button */
+form input,
+button {
+    outline: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+}
+/* further styled the input */
+form input {
+    width: 50%;
+    border-radius: 1rem 0 1rem 0;
+    margin-right: 3px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* added rainbow background and styled the button  */
+button {
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* when hover on the button, ease in */
+button:hover {
+    border: 1px solid #fff;
+    font-size: 20px;
+    transition: all .2s ease-in-out;
+}
+
+/* styled the lyrics box  */
+#result {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+
+
