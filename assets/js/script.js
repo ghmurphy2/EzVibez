@@ -1,15 +1,13 @@
-<<<<<<< HEAD
-const form = document.getElementById("form");
-const search = document.getElementById("search");
-const result = document.getElementById("result");
-const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372&text="
-=======
 // get variables from html
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const result = document.getElementById("result");
 const recommended = $("#recs");
->>>>>>> main
+const historyModal = document.querySelector(".modal-content");
+const test = document.querySelector(".modal");
+
+var historyValue = [];
+
 // API URL
 const apiURL = "https://api.lyrics.ovh";
 
@@ -27,12 +25,39 @@ form.addEventListener("submit", e => {
         // or else I want to begin search
     } else {
         beginSearch(searchValue);
-<<<<<<< HEAD
-=======
-        // getRecommendations(searchValue);
->>>>>>> main
+        saveHistory(searchValue);
     }
 })
+
+function saveHistory(search){
+    if (historyValue.length >= 8) {
+        historyValue.shift();
+    }
+
+    historyValue.push(search);
+    localStorage.setItem('saveHistory', JSON.stringify(historyValue))
+
+    for(let i = historyValue.length - 1; i >= 0; i--) {
+        var item = historyValue[i];
+        console.log(item)
+        var btn = document.createElement("button");
+        btn.textContent = item;
+        btn.addEventListener("click", function() {
+            var artist = $(this).text();
+            beginSearch(artist);
+        });
+        historyModal.appendChild(btn);
+    }
+}
+
+
+function init(){
+    var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
+    if (savedSearch !== null){
+        historyValue = savedSearch;
+    }
+
+}
 
 // An async function is a function declared with the async keyword, and the await keyword is permitted within them. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
 // Search function 
@@ -44,10 +69,6 @@ async function beginSearch(searchValue) {
     const data = await searchResult.json();
     // console.log(data);
     displayData(data);
-<<<<<<< HEAD
-    getMood()
-=======
->>>>>>> main
 }
 
 // Display Search Result - DisplayData function
@@ -103,42 +124,35 @@ async function getLyrics(artist, songTitle) {
     // display lyrics to the 
     result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
     <p>${lyrics}</p>`;
-<<<<<<< HEAD
-    // saveLyrics()
-  }
-function getMood(){
-    const lyricsEl = $('#lyrics')
-    const moodEl = fetch(`${meaningApi}${lyricsEl}`)
-    const moodData = 
-        console.log(moodEl)};
-        
-        if{
-
-        }
-
-
-//   score_tag
-// Polarity of the element it refers to: 
-// P+: strong positive
-// P: positive
-// NEU: neutral
-// N: negative
-// N+: strong negative
-// NONE: without polarity
-// //   function saveLyrics(){
-//     const lyrics = lyricsEl.text
-//     let highScores = JSON.parse(localStorage.getItem("lyrics")) || [];
-//     let newLyrics = { 
-//       initials:initials,
-//     }
-//     highScores.push(newScore)
-//     localStorage.setItem('lyrics', JSON.stringify(lyrics))
-//   }
-
-=======
 
     getRecommendations(artist);
 }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
 // Populate recommendation section
 var getRecommendations = function (search) {
@@ -172,43 +186,6 @@ var getRecommendations = function (search) {
         }
     });
 }
->>>>>>> main
 
 
-
-
-
-
-
-// 425157-EzVibez-ON3O5RLK
-
-// https://tastedive.com/api/similar?q=red+hot+chili+peppers%2C+pulp+fiction
-
-// EzVibez is an app that allows user to look up a song(based on parameters) and view the lyrics and a brief analysis of the lyrics based on sentiment
-// layout will be multi paged with a landing page that contians a search 
-// possible song play back spotify or shazam
-// limit result 25, search parameters name, artist(album if time)
-// on link click redirect to lyric and analysis page(playback song)
-// mood lighting from analysis output
-// playbar? embedded sound cloud widget
-// previous button pulls from local storage, plays back last song and shows last page, tasedive suggest next
-
-
-// off center wireframe, populate to the left, foundation layouts
-// code our search bar with foundation(form with input)
-// query itunes api to pull song data and possible results
-// populate results on page, have each result display button with href
-// user selects result
-// directs user to lyric and information page(has dynamic mood based on sentiment analysis)
-// allow user to select similar songs through tastedrive with recommendationed next buttons(column format with 5 similar links)
-// loop song into lyric page, query lyrics and mood for new song
-
-// function button submit
-
-// function query itunes
-    // push local memory
-    // query reccomended
-
-    //query lyrics
-        // query sentiment
-            // set mood 
+init();
