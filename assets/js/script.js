@@ -1,4 +1,10 @@
+// get variables from html
+const form = document.getElementById("form");
+const search = document.getElementById("search");
+const result = document.getElementById("result");
 
+// API URL
+const apiURL = "https://api.lyrics.ovh";
 
 
 
