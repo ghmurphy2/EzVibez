@@ -2,10 +2,11 @@
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const result = document.getElementById("result");
-// const recommended = document.getElementById("recs")
 const recommended = $("#recs");
+const historyModal = document.querySelector(".modal-content");
+const test = document.querySelector(".modal");
+
 var historyValue = [];
-// const modal = document.querySelector(".modal-content");
 
 // API URL
 const apiURL = "https://api.lyrics.ovh";
@@ -28,24 +29,32 @@ form.addEventListener("submit", e => {
     }
 })
 
+function saveHistory(search){
+    if (historyValue.length >= 8) {
+        historyValue.shift();
+    }
 
-
-function saveHistory(search){ 
     historyValue.push(search);
     localStorage.setItem('saveHistory', JSON.stringify(historyValue))
 
-    for(let i=historyValue.length;i>=0;i--){
+    for(let i = historyValue.length - 1; i >= 0; i--) {
         var item = historyValue[i];
+        console.log(item)
         var btn = document.createElement("button");
         btn.textContent = item;
-        modal.appendChild(btn);
+        btn.addEventListener("click", function() {
+            var artist = $(this).text();
+            beginSearch(artist);
+        });
+        historyModal.appendChild(btn);
     }
 }
+
 
 function init(){
     var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
     if (savedSearch !== null){
-        historyValue = savedSearch
+        historyValue = savedSearch;
     }
 
 }
@@ -131,7 +140,6 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
-    getRecommendations(artist);
 }
 
 // When the user clicks on <span> (x), close the modal
