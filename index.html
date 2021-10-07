@@ -8,22 +8,31 @@
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
-
+    <div id="particles-js"></div>
+    <div class="count-particles">
+      <span class="js-count-particles">--</span>
+    </div>
     <!-- Start Top Bar -->
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu">
           <li class="menu-text">EzVibez</li> <!--LOGO-->
         </ul>
-      </div>
+    </div>
       <div class="top-bar-right">
-        <button id="historyBtn">History</button>
+        <button id="myBtn">History</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times</span>
+          <p> </p>
+        </div>
+        </div>
       </div>
-    </div>
+  </div>
     <!-- End Top Bar -->
-    <div class="count-particles">
-      <span class="js-count-particles">--</span> particles
-    </div>
+
     <div class="callout large">
       <div class="row column text-center">
         <h1>EzVibez</h1> <!--LOGO-->
@@ -93,14 +102,12 @@
            <p>Made with ❤️ by Gavin Murphy, Umera Malek, & Gabriel Lantin</p>
         </div>
     </footer>
+
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+ 
     <script src = ./assets/js/script.js></script>
     <script src = ./app.js></script>
     <script src = ./particles.js></script>
-
   </body>
 </html>
