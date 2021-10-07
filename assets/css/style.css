@@ -6,12 +6,13 @@
 /* added transparent background */
 body::after {
     content: "";
-    position: fixed;
+    position: relative;
+    background: white;
     top: 0;
     left: 50%; 
     height: 100%;
     width: 900px;
-    z-index: -1;
+    z-index: 2;
 }
 
 #top {
