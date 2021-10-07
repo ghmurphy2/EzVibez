@@ -1,102 +1,99 @@
 <!doctype html>
 <html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EzVibez | Find lyrics, mood, and recommendations</title>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EzVibez | Find lyrics, mood, and recommendations</title>
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body>
-  <div id='particles-js'>
-  <!-- Start Top Bar -->
-  <h3>EzVibez</h3>
-  <!-- End Top Bar -->
-  <div id='format'>
-    <div class="callout large">
-      <div class="row column text-center">
-        <h1>EzVibez</h1>
-        <!--LOGO-->
-        <p class="lead">Search for a song to get its lyrics and mood</p>
-        <div class="input-group input-group-rounded">
-          <input class="input-group-field" type="search">
-          <div class="input-group-button">
-            <input type="submit" class="button secondary" value="Search">
-          </div>
-        </div>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">EzVibez</li> <!--LOGO-->
+        </ul>
       </div>
     </div>
-  </div>
+    <!-- End Top Bar -->
 
-  <div class="row">
-    <div class="medium-4 columns medium-pull-6">
-      <h2>Lyrics</h2>
-      <p id="lyrics">Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed
-        nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis
-        sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum
-        elementum. Donec viverra auctor.</p>
+    <div class="callout large">
+      <div class="row column text-center">
+        <h1>EzVibez</h1> <!--LOGO-->
+        <p class="lead">Search for a song to get its lyrics and mood</p>
+        <div class="input-group input-group-rounded">
+          <form id="form"  autocomplete="off">
+            <input type="text" id="search"  placeholder="Search artist or song">
+            <button>Search</button>
+          <form>
+          </div>          
+      </div>
     </div>
-  </div>
 
-  <hr>
+    <div class="row container" id="result">
+      <div class="medium-4 columns medium-pull-6">
+        <h2>Lyrics</h2>
+        <p id="lyrics">Enter Song or Artist in the field above</p>
+      </div>
+    </div>
 
-  <div class="row column">
-    <ul class="vertical medium-horizontal menu expanded text-center">
-      <li>
-        <div class="stat mood">The mood for this song is: </div><span id="mood">Happy</span>
-      </li>
-    </ul>
-  </div>
+    <hr>
 
-  <hr>
+    <div class="row column">
+      <ul class="vertical medium-horizontal menu expanded text-center">
+        <li><div class="stat mood">The mood for this song is: </div><span id="mood">Happy</span></li>
+      </ul>
+    </div>
 
-  <div class="row column">
-    <h3>Recommendations</h3>
-  </div>
+    <hr>
 
-  <div class="row medium-up-3 large-up-4" id="recs">
-    <!--8 recommendations add this dynamically in js-->
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
+    <div class="row column">
+      <h3>Recommendations</h3>
     </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-    <div class="column">
-      <img class="thumbnail" src="https://placehold.it/550x550">
-    </div>
-  </div>
 
-  <hr>
-  </div>
-  <footer>
-    <p>Team 5 | Berkeley Coding Bootcamp</p>
-  </footer>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-  <script>
-    $('#format').foundation();
-  </script>
-  <script src=./assets/js/script.js></script>
-  <script src=./particles.js></script>
-  <script src=./script.js></script>
-</body>
+    <div class="row medium-up-3 large-up-4" id="recs"> <!--8 recommendations add this dynamically in js-->
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+      <div class="column">
+        <!-- <img class="thumbnail" src="https://placehold.it/550x550"> -->
+      </div>
+    </div>
 
+    <hr>
+
+    <footer class="responsive-blog-footer">
+        <div class="row columns flex-container align-justify text-center">
+           <p>Team 5 | Berkeley Coding Bootcamp</p>
+           <p>Made with ❤️ by Gavin Murphy, Umera Malek, & Gabriel Lantin</p>
+        </div>
+      </footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src = ./assets/js/script.js></script>
+  </body>
 </html>
