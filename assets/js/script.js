@@ -44,20 +44,4 @@ var request = new XMLHttpRequest();
         // query sentiment
             // set mood 
 
-            Where parameterkeyvalue can be one or more parameter key and value pairs indicating the details of your query.
 
-            To construct a parameter key and value pair, you must concatenate each parameter key with an equal sign (=) and a value string. For example: key1=value1. To create a string of parameter key and value pairs, you must concatenate each pair using an ampersand (&). For example: key1=value1&key2=value2&key3=value3.
-            Country code US
-            music terms musicArtist, musicTrack, album, musicVideo, mix, song.
-            <script src="https://.../search?parameterkeyvalue&callback="{name of JavaScript function in webpage}"/>.
-            Please note that “musicTrack” can include both songs and music videos in the results.
-            
-            To search for all Jack Johnson audio and video content and return only the first 25 items, use the following URL: https://itunes.apple.com/search?term=jack+johnson&limit=25.
-            term=jack+johnson
-            limit=25
-            
-            curl 'https://api.meaningcloud.com/sentiment-2.1' \
-                -F 'key=YOUR API KEY' \
-                -F 'txt=YOUR TEXT HERE' \variable for query, lyric output from ovhs
-                -F 'lang=TEXT LANGUAGE HERE'
-            add text translation
