@@ -4,7 +4,8 @@ const search = document.getElementById("search");
 const result = document.getElementById("result");
 // const recommended = document.getElementById("recs")
 const recommended = $("#recs");
-
+var historyValue = [];
+// const modal = document.querySelector(".modal-content");
 
 // API URL
 const apiURL = "https://api.lyrics.ovh";
@@ -23,9 +24,31 @@ form.addEventListener("submit", e => {
         // or else I want to begin search
     } else {
         beginSearch(searchValue);
-        // getRecommendations(searchValue);
+        saveHistory(searchValue);
     }
 })
+
+
+
+function saveHistory(search){ 
+    historyValue.push(search);
+    localStorage.setItem('saveHistory', JSON.stringify(historyValue))
+
+    for(let i=historyValue.length;i>=0;i--){
+        var item = historyValue[i];
+        var btn = document.createElement("button");
+        btn.textContent = item;
+        modal.appendChild(btn);
+    }
+}
+
+function init(){
+    var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
+    if (savedSearch !== null){
+        historyValue = savedSearch
+    }
+
+}
 
 // An async function is a function declared with the async keyword, and the await keyword is permitted within them. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
 // Search function 
@@ -157,7 +180,7 @@ var getRecommendations = function (search) {
 }
 
 
-
+init();
 
 
 
