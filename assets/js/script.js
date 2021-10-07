@@ -1,8 +1,7 @@
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const result = document.getElementById("result");
-const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&"
-const meaningApiKey = "1a79c35aa06efc8aff60e799244e2372"
+const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372"
 // API URL
 const apiURL = "https://api.lyrics.ovh";
 
@@ -33,6 +32,7 @@ async function beginSearch(searchValue) {
     const data = await searchResult.json();
     // console.log(data);
     displayData(data);
+    getMood();
 }
 
 // Display Search Result - DisplayData function
@@ -90,6 +90,11 @@ async function getLyrics(artist, songTitle) {
     <p>${lyrics}</p>`;
     // saveLyrics()
   }
+function getMood(){
+    const lyricsEl = ${lyrics}
+    const moodEl = fetch(`${meaningApi}+${lyricsEl}`)
+
+        console.log(moodEl)};
 
 //   function saveLyrics(){
 //     const lyrics = lyricsEl.text
