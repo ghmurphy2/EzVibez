@@ -35,6 +35,30 @@ async function beginSearch(searchValue) {
     displayData(data);
 }
 
+// Display Search Result - DisplayData function
+
+function displayData(data) {
+    // create HTML in js
+    // create the result as a list 
+    // .map to create a new array 
+    // we are getting the results and the result is the song, artist name and song title 
+    // create a button get lyrics to expand to get lyrics
+    result.innerHTML = `
+    <ul class="songs">
+      ${data.data
+        .map(song=> `<li>
+                    <div>
+                        <strong>${song.artist.name}</strong> -${song.title} 
+                    </div>
+                    <span data-artist="${song.artist.name}" data-songtitle="${song.title}">Lyrics</span>
+                </li>`
+        )
+        // to join as a whole string
+        .join('')}
+    </ul>
+  `;
+}
+
 
 
 
