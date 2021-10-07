@@ -55,5 +55,52 @@ button:hover {
     padding: 3rem 0;
 }
 
+/* element from js */
+.songs {
+    width: 70%;
+    list-style: none;
+    margin:0 auto;
+    padding: 2rem 0;
+}
+
+/* added a flex and centered the searched results from js  */
+.songs li {
+    font-size: 1.4rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* styled the get lyrics button from js */
+.songs li span{
+    font-size: 1.4rem;
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+#top {
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group-rounded .input-group-field {
+    border-radius: 5000px 0 0 5000px;
+    padding-left: 1rem;
+}
+  
+.input-group-rounded .input-group-button .button {
+    border-radius: 0 5000px 5000px 0;
+    font-size: 0.8rem;
+}
 
 
