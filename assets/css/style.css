@@ -14,6 +14,29 @@ body::after {
     z-index: -1;
 }
 
+#top {
+    justify-content: center;
+    align-items: center;
+}
+
+.top-bar{
+    background-color: black;
+}
+
+.menu-text{
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+}
+
+.input-group-rounded .input-group-field {
+    border-radius: 5000px 0 0 5000px;
+    padding-left: 1rem;
+}
+  
+.input-group-rounded .input-group-button .button {
+    border-radius: 0 5000px 5000px 0;
+    font-size: 0.8rem;
+}
+
 /* styled the form input and button */
 form input,
 button {
@@ -85,22 +108,8 @@ button:hover {
     cursor: pointer;
 }
 
-
-
-
-#top {
-    justify-content: center;
-    align-items: center;
+footer {
+    background-color: black;
+    color: yellow;
 }
-
-.input-group-rounded .input-group-field {
-    border-radius: 5000px 0 0 5000px;
-    padding-left: 1rem;
-}
-  
-.input-group-rounded .input-group-button .button {
-    border-radius: 0 5000px 5000px 0;
-    font-size: 0.8rem;
-}
-
 
