@@ -1,10 +1,114 @@
-body{
-  padding: 0%;
-  margin: 0%;
-  overflow: hidden;
-  height: 100vw;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* added transparent background */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%; 
+  height: 100%;
+  width: 900px;
+  z-index: -1;
 }
 
-#particles-js{
-  height: 100%;
+#top {
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar{
+  background-color: black;
+}
+
+.menu-text{
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+}
+
+.input-group-rounded .input-group-field {
+  border-radius: 5000px 0 0 5000px;
+  padding-left: 1rem;
+}
+
+.input-group-rounded .input-group-button .button {
+  border-radius: 0 5000px 5000px 0;
+  font-size: 0.8rem;
+}
+
+/* styled the form input and button */
+form input,
+button {
+  outline: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+}
+/* further styled the input */
+form input {
+  width: 50%;
+  border-radius: 1rem 0 1rem 0;
+  margin-right: 3px;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+/* added rainbow background and styled the button  */
+button {
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* when hover on the button, ease in */
+button:hover {
+  border: 1px solid #fff;
+  font-size: 20px;
+  transition: all .2s ease-in-out;
+}
+
+/* styled the lyrics box  */
+#result {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* element from js */
+.songs {
+  width: 70%;
+  list-style: none;
+  margin:0 auto;
+  padding: 2rem 0;
+}
+
+/* added a flex and centered the searched results from js  */
+.songs li {
+  font-size: 1.4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* styled the get lyrics button from js */
+.songs li span{
+  font-size: 1.4rem;
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  padding: 5px;
+  margin: 5px;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: black;
+  color: yellow;
 }
