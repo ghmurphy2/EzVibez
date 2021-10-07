@@ -27,6 +27,15 @@ body::after {
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
 }
 
+#historyBtn{
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
 .input-group-rounded .input-group-field {
     border-radius: 5000px 0 0 5000px;
     padding-left: 1rem;
@@ -55,7 +64,7 @@ form input {
 }
 
 /* added rainbow background and styled the button  */
-button {
+#searchBtn {
     background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
     border: 1px solid transparent;
     border-radius: 3px;
