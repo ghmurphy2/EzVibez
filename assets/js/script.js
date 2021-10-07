@@ -59,8 +59,37 @@ function displayData(data) {
   `;
 }
 
+//event listener to get the lyrics button
+result.addEventListener('click', e=>{
+    // create a variable called clicked element
+    const clickedElement = e.target;
+
+    //checking if lyrics is a button or not
+    if (clickedElement.tagName === 'SPAN'){
+        const artist = clickedElement.getAttribute('data-artist');
+        const songTitle = clickedElement.getAttribute('data-songtitle');
+        
+        // calling upon a function with two parameters
+        getLyrics(artist, songTitle)
+    }
+})
 
 
+// Get lyrics for the song
+async function getLyrics(artist, songTitle) {
+    // fetch something from the API, artist and song title
+    const response = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+    // again needs to be in json format
+    const data = await response.json();
+  
+    // (/(\r\n|\r|\n)/g, '<br>') got this from the website
+    const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
+  
+    // display lyrics to the 
+    result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
+    <p>${lyrics}</p>`;
+  
+  }
 
 
 
