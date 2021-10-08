@@ -168,64 +168,66 @@ function getMood() {
         response.json().then(async function (data) {
             console.log(data)
             console.log(data.score_tag)
-    if(data.score_tag == "P+"){
-        moodAnalysis.text("Very Positive")
-    };
-    if(data.score_tag == "P"){
-        moodAnalysis.text("Positive")
-        };
-        if(data.score_tag == "NEU"){
-            moodAnalysis.text("Neutral")
+            if (data.score_tag == "P+") {
+                moodAnalysis.text("Very Positive")
+            };
+            if (data.score_tag == "P") {
+                moodAnalysis.text("Positive")
+            };
+            if (data.score_tag == "NEU") {
+                moodAnalysis.text("Neutral")
             }
-            if(data.score_tag == "N"){
+            if (data.score_tag == "N") {
                 moodAnalysis.text("Negative")
-                }
-                if(data.score_tag == "N+"){
-                    moodAnalysis.text("Very Negative")
-                    }
-                    else
-                    moodAnalysis.text("Inconclusive analysis")
+            }
+            if (data.score_tag == "N+") {
+                moodAnalysis.text("Very Negative")
+            }
+            if ((data.score_tag == "NONE"))
+                moodAnalysis.text("Inconclusive analysis")
+        })
     })
-});
-// P+: strong positive
-// P: positive
-// NEU: neutral
-// N: negative
-// N+: strong negative
-// NONE: without polarity
+};
 
-// Populate recommendation section
-var getRecommendations = function (search) {
-    var key = "425157-EzVibez-ON3O5RLK"; // our tastedive api key
-    var url = "https://tastedive.com/api/similar"; // base url
-    $.ajax({
-        type: "GET",
-        data: {
-            k: key,
-            q: search,
-            type: "music"
-        },
-        url: url,
-        dataType: "jsonp",
-        // jsonpCallback: 'jsonp_callback',
-        // contentType: 'application/json'
-    }).then(function (res) {
-        // console.log("results", res.Similar.Results[0].Name);
-        recommended.append('<h4>Check out these similar artists!</h4>');
+    // P+: strong positive
+    // P: positive
+    // NEU: neutral
+    // N: negative
+    // N+: strong negative
+    // NONE: without polarity
 
-        // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
-        // to conduct a new search
-        for (let i = 0; i < 8; i++) {
-            var rec = $("<button></button>").addClass("column").text(res.Similar.Results[i].Name).css("padding", "5px");
-            rec.on('click', function () {
-                var artist = $(this).text();
-                // console.log(artist, typeof(artist));
-                beginSearch(artist);
-            });
-            recommended.append(rec);
-        }
-    });
-}
+    // Populate recommendation section
+    var getRecommendations = function (search) {
+        var key = "425157-EzVibez-ON3O5RLK"; // our tastedive api key
+        var url = "https://tastedive.com/api/similar"; // base url
+        $.ajax({
+            type: "GET",
+            data: {
+                k: key,
+                q: search,
+                type: "music"
+            },
+            url: url,
+            dataType: "jsonp",
+            // jsonpCallback: 'jsonp_callback',
+            // contentType: 'application/json'
+        }).then(function (res) {
+            // console.log("results", res.Similar.Results[0].Name);
+            recommended.append('<h4>Check out these similar artists!</h4>');
+
+            // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
+            // to conduct a new search
+            for (let i = 0; i < 8; i++) {
+                var rec = $("<button></button>").addClass("column").text(res.Similar.Results[i].Name).css("padding", "5px");
+                rec.on('click', function () {
+                    var artist = $(this).text();
+                    // console.log(artist, typeof(artist));
+                    beginSearch(artist);
+                });
+                recommended.append(rec);
+            }
+        });
+    }
 
 
-init();
+    init();
