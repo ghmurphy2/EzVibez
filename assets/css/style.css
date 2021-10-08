@@ -67,7 +67,6 @@ button {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    background: white;
   }
   
   /* Modal Content/Box */
@@ -77,7 +76,6 @@ button {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-    background:white;
   }
   
   /* The Close Button */
