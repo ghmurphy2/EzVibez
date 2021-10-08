@@ -186,7 +186,7 @@ var getRecommendations = function (search) {
         // console.log("results", res.Similar.Results[0].Name);
         recommended.append('<h4>Check out these similar artists!</h4>');
         recommended.empty();
-
+        console.log("res", res)
         // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
         // to conduct a new search
         for (let i = 0; i < 8; i++) {
