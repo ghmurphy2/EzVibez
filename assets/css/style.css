@@ -13,6 +13,11 @@ body::after {
     width: 900px;
     z-index: -1;
 }
+.menu-text{
+  width: 400px;
+  height: 100px;
+  padding:0%;
+}
 
 #top {
     justify-content: center;
