@@ -4,15 +4,27 @@ const search = document.getElementById("search");
 const result = document.getElementById("result");
 const recommended = $("#recs");
 const historyModal = document.querySelector(".modal-content");
-const test = document.querySelector(".modal");
+// const test = document.querySelector(".modal");
 
 const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372&txt=";
 const moodAnalysis = $("#mood");
 
 var historyValue = [];
+var historyButtons = [];
 
 // API URL
 const apiURL = "https://api.lyrics.ovh";
+
+function init() {
+    var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
+    if (savedSearch !== null) {
+        historyValue = savedSearch;
+    }
+    var savedBtns = JSON.parse(localStorage.getItem("saveButtons"));
+    if (savedSearch !== null) {
+        historyButtons = savedBtns;
+    }
+}
 
 // Get Search Value
 // add an eventlistener, so everytime the search button is clicked without a value, it will send out an alert to add a value
@@ -32,46 +44,28 @@ form.addEventListener("submit", e => {
     }
 })
 
-
 function saveHistory(search){
-    if (historyValue.length >= 8) {
+    if (historyValue.length > 8) {
         historyValue.shift();
     }
 
     historyValue.push(search);
-    localStorage.setItem('saveHistory', JSON.stringify(historyValue))
-
-    for (let i = historyValue.length - 1; i >= 0; i--) {
-        var item = historyValue[i];
-        console.log(item)
-        var btn = document.createElement("button");
-        btn.textContent = item;
-
-        btn.addEventListener("click", function() {
-            var artist = $(this).text();
-            beginSearch(artist);
-        });
-        historyModal.appendChild(btn);
-    }
-}
-
-function init() {
-    var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
-    if (savedSearch !== null) {
-        historyValue = savedSearch;
-    }
-
+    historyButtons.push(search);
+    localStorage.setItem('saveHistory', JSON.stringify(historyValue));
+    localStorage.setItem('saveButtons', JSON.stringify(historyButtons));
 }
 
 // An async function is a function declared with the async keyword, and the await keyword is permitted within them. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
 // Search function 
 
 async function beginSearch(searchValue) {
+    recommended.empty();
     // fetch the results using the api URL 
     const searchResult = await fetch(`${apiURL}/suggest/${searchValue}`);
     // we are suppose to get the data from API in json format
     const data = await searchResult.json();
     // console.log(data);
+    
     displayData(data);
 }
 
@@ -117,6 +111,7 @@ result.addEventListener('click', e => {
 
 // Get lyrics for the song
 async function getLyrics(artist, songTitle) {
+    recommended.empty();
     // fetch something from the API, artist and song title
     const response = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
     // again needs to be in json format
@@ -145,19 +140,32 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
+    $(".modal-content").empty();
+    for (let i = 0; i < historyButtons.length; i++) {
+        var item = historyButtons[i];
+        console.log(i,item)
+        var btn = document.createElement("button");
+        btn.textContent = historyButtons[i];
+
+        btn.addEventListener("click", function() {
+            var artist = historyButtons[i];
+            beginSearch(artist);
+        });
+        historyModal.appendChild(btn);
+    }
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
-  }
+}
   
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+}
 
 // Populate recommendation section
 var getRecommendations = function (search) {
@@ -177,6 +185,7 @@ var getRecommendations = function (search) {
     }).then(function (res) {
         // console.log("results", res.Similar.Results[0].Name);
         recommended.append('<h4>Check out these similar artists!</h4>');
+        recommended.empty();
 
         // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
         // to conduct a new search
