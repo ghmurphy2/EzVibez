@@ -5,9 +5,9 @@ const result = document.getElementById("result");
 const recommended = $("#recs");
 const historyModal = document.querySelector(".modal-content");
 const test = document.querySelector(".modal");
+
 const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372&txt=";
 const moodAnalysis = $("#mood");
-
 
 var historyValue = [];
 
@@ -32,7 +32,8 @@ form.addEventListener("submit", e => {
     }
 })
 
-function saveHistory(search) {
+
+function saveHistory(search){
     if (historyValue.length >= 8) {
         historyValue.shift();
     }
@@ -45,14 +46,14 @@ function saveHistory(search) {
         console.log(item)
         var btn = document.createElement("button");
         btn.textContent = item;
-        btn.addEventListener("click", function () {
+
+        btn.addEventListener("click", function() {
             var artist = $(this).text();
             beginSearch(artist);
         });
         historyModal.appendChild(btn);
     }
 }
-
 
 function init() {
     var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
@@ -142,20 +143,53 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function () {
+btn.onclick = function() {
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+span.onclick = function() {
     modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+      modal.style.display = "none";
     }
+  }
+
+// Populate recommendation section
+var getRecommendations = function (search) {
+    var key = "425157-EzVibez-ON3O5RLK"; // our tastedive api key
+    var url = "https://tastedive.com/api/similar"; // base url
+    $.ajax({
+        type: "GET",
+        data: {
+            k: key,
+            q: search,
+            type: "music"
+        },
+        url: url,
+        dataType: "jsonp",
+        // jsonpCallback: 'jsonp_callback',
+        // contentType: 'application/json'
+    }).then(function (res) {
+        // console.log("results", res.Similar.Results[0].Name);
+        recommended.append('<h4>Check out these similar artists!</h4>');
+
+        // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
+        // to conduct a new search
+        for (let i = 0; i < 8; i++) {
+            var rec = $("<button></button>").addClass("column").text(res.Similar.Results[i].Name).css("padding", "5px");
+            rec.on('click', function() {
+                    var artist = $(this).text();
+                    // console.log(artist, typeof(artist));
+                    beginSearch(artist);
+            });
+            recommended.append(rec);
+        }
+    });
 }
 
 function getMood() {
@@ -189,45 +223,4 @@ function getMood() {
     })
 };
 
-    // P+: strong positive
-    // P: positive
-    // NEU: neutral
-    // N: negative
-    // N+: strong negative
-    // NONE: without polarity
-
-    // Populate recommendation section
-    var getRecommendations = function (search) {
-        var key = "425157-EzVibez-ON3O5RLK"; // our tastedive api key
-        var url = "https://tastedive.com/api/similar"; // base url
-        $.ajax({
-            type: "GET",
-            data: {
-                k: key,
-                q: search,
-                type: "music"
-            },
-            url: url,
-            dataType: "jsonp",
-            // jsonpCallback: 'jsonp_callback',
-            // contentType: 'application/json'
-        }).then(function (res) {
-            // console.log("results", res.Similar.Results[0].Name);
-            recommended.append('<h4>Check out these similar artists!</h4>');
-
-            // Gets the first 8 artists and appends them to the recs section. Each generated button has an event listener
-            // to conduct a new search
-            for (let i = 0; i < 8; i++) {
-                var rec = $("<button></button>").addClass("column").text(res.Similar.Results[i].Name).css("padding", "5px");
-                rec.on('click', function () {
-                    var artist = $(this).text();
-                    // console.log(artist, typeof(artist));
-                    beginSearch(artist);
-                });
-                recommended.append(rec);
-            }
-        });
-    }
-
-
-    init();
+init();

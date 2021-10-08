@@ -24,11 +24,20 @@ body::after {
 }
 
 .menu-text{
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    background-image: wheat;
 }
 
 #myBtn{
-    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    background: wheat;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button {
+    background: wheat;
     border: 1px solid transparent;
     border-radius: 3px;
     font-weight: 600;
@@ -103,7 +112,7 @@ form input {
 
 /* added rainbow background and styled the button  */
 #searchBtn {
-    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    background: wheat;
     border: 1px solid transparent;
     border-radius: 3px;
     font-weight: 700;
@@ -147,7 +156,7 @@ button:hover {
 /* styled the get lyrics button from js */
 .songs li span{
     font-size: 1.4rem;
-    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    background: wheat;
     padding: 5px;
     margin: 5px;
     outline: none;
