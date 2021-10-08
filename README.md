@@ -36,7 +36,25 @@ https://ghmurphy2.github.io/EzVibez/
 
 CODE HIGHLIGHTS
 
-ADD GIFS AND IMAGES 
+Lyrics.ovh
+
+
+
+![](./assets/img/photo3.png)
+![](./assets/img/photo4.png)
+![](./assets/img/photo5.png)
+![](./assets/img/photo6.png)
+![](./assets/img/codehighlight1.gif)
+![](./assets/img/codehighlight2.gif)
+
+
+Taste Dive 
+
+![](./assets/img/photo7.png)
+
+
+
+
 
 
 Meaning cloud API Code snippets
@@ -54,20 +72,22 @@ About API's
     - Lyrics.ovh is a simple lyrics retrieving API. Lyrics.ovh has only two parameters (Artist and Song title). 
     - Lyrics.ovh is a JSON format response. 
     - Lyrics has two errors 200 and 404
-ADD IMAGES 
+
 
 - Meaning cloud API
     - Requires long text strings in API call
     - Slow returns but multiple functions
     - 6 levels of sentiment analysis
 
-    ADD IMAGES
+   
 
 - TasteDive API
     - The TasteDive API can be used to integrate recommendations in other products.
     - An entertainment recommendation engine for films, TV shows, music, video games, and books.
     - Parameters 
-    ADD AN IMAGE
+    
+    ![](./assets/img/photo1.png)
+    ![](./assets/img/photo2.png)
 
 
 ## CSS style
@@ -75,8 +95,7 @@ ADD IMAGES
 - Our project uses a prebuild foundation from to establish our base style and is adapted to our desired wireframe. Particles JS supplies a styled moving canvas behind the lyrics for our users to enjoy. 
 - Like Bootstrap, Foundation by ZURB is a responsive front-end framework. It provides a responsive grid system, HTML and CSS UI components, templates, code snippets, and even JS Utilities
 - Foundation is Mobile Responsive breakpoints 
-
-ADD AN IMAGE AND GIF 
+ 
 
 
 ## Authors
