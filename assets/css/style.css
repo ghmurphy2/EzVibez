@@ -173,9 +173,9 @@ button:hover {
 footer {
     background-color: black;
     color: yellow;
-    position:fixed;
+    /* position:fixed;
     bottom:0;
-    width:100vw;
+    width:100vw; */
 }
 
 
