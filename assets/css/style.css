@@ -137,6 +137,7 @@ button:hover {
     margin: 0 auto;
     text-align: center;
     padding: 3rem 0;
+    font-size: 3rem;
 
 }
 
@@ -150,7 +151,7 @@ button:hover {
 
 /* added a flex and centered the searched results from js  */
 .songs li {
-    font-size: 1.4rem;
+    font-size: 3rem;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -173,9 +174,6 @@ button:hover {
 footer {
     background-color: black;
     color: yellow;
-    position:fixed;
-    bottom:0;
-    width:100vw;
 }
 
 
