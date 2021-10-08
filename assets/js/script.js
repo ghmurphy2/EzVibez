@@ -5,6 +5,9 @@ const result = document.getElementById("result");
 const recommended = $("#recs");
 const historyModal = document.querySelector(".modal-content");
 const test = document.querySelector(".modal");
+const meaningApi = "https://api.meaningcloud.com/sentiment-2.1?lang=auto&key=1a79c35aa06efc8aff60e799244e2372&txt=";
+const moodAnalysis = $("#mood");
+
 
 var historyValue = [];
 
@@ -19,7 +22,7 @@ form.addEventListener("submit", e => {
     // to remove white space from ends of a string
     searchValue = search.value.trim();
 
-    if (!searchValue) { 
+    if (!searchValue) {
         // cant use alerts 
         alert("Enter an artist or song");
         // or else I want to begin search
@@ -29,7 +32,7 @@ form.addEventListener("submit", e => {
     }
 })
 
-function saveHistory(search){
+function saveHistory(search) {
     if (historyValue.length >= 8) {
         historyValue.shift();
     }
@@ -37,12 +40,12 @@ function saveHistory(search){
     historyValue.push(search);
     localStorage.setItem('saveHistory', JSON.stringify(historyValue))
 
-    for(let i = historyValue.length - 1; i >= 0; i--) {
+    for (let i = historyValue.length - 1; i >= 0; i--) {
         var item = historyValue[i];
         console.log(item)
         var btn = document.createElement("button");
         btn.textContent = item;
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", function () {
             var artist = $(this).text();
             beginSearch(artist);
         });
@@ -51,9 +54,9 @@ function saveHistory(search){
 }
 
 
-function init(){
+function init() {
     var savedSearch = JSON.parse(localStorage.getItem("saveHistory"));
-    if (savedSearch !== null){
+    if (savedSearch !== null) {
         historyValue = savedSearch;
     }
 
@@ -82,29 +85,29 @@ function displayData(data) {
     result.innerHTML = `
     <ul class="songs">
       ${data.data
-        .map(song=> `<li>
+            .map(song => `<li>
                     <div>
                         <strong>${song.artist.name}</strong> -${song.title} 
                     </div>
                     <span data-artist="${song.artist.name}" data-songtitle="${song.title}">Lyrics</span>
                 </li>`
-        )
-        // to join as a whole string
-        .join('')}
+            )
+            // to join as a whole string
+            .join('')}
     </ul>
   `;
 }
 
 //event listener to get the lyrics button
-result.addEventListener('click', e=>{
+result.addEventListener('click', e => {
     // create a variable called clicked element
     const clickedElement = e.target;
 
     //checking if lyrics is a button or not
-    if (clickedElement.tagName === 'SPAN'){
+    if (clickedElement.tagName === 'SPAN') {
         const artist = clickedElement.getAttribute('data-artist');
         const songTitle = clickedElement.getAttribute('data-songtitle');
-        
+
         // calling upon a function with two parameters
         getLyrics(artist, songTitle)
     }
@@ -117,15 +120,16 @@ async function getLyrics(artist, songTitle) {
     const response = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
     // again needs to be in json format
     const data = await response.json();
-  
+
     // (/(\r\n|\r|\n)/g, '<br>') got this from the website
     const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
-  
+
     // display lyrics to the 
     result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
     <p>${lyrics}</p>`;
 
     getRecommendations(artist);
+    getMood();
 }
 
 // Get the modal
@@ -138,21 +142,57 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+btn.onclick = function () {
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
     modal.style.display = "none";
-  }
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
-  }
+}
+
+function getMood() {
+    const lyricsEl = $('#result').find('p')
+    const lyricQuery = lyricsEl[0].outerText
+    fetch(`${meaningApi}${lyricQuery}`).then(function (response) {
+        console.log(response)
+        console.log(lyricsEl)
+        console.log(lyricQuery)
+        response.json().then(async function (data) {
+            console.log(data)
+            console.log(data.score_tag)
+    if(data.score_tag == "P+"){
+        moodAnalysis.text("Very Positive")
+    };
+    if(data.score_tag == "P"){
+        moodAnalysis.text("Positive")
+        };
+        if(data.score_tag == "NEU"){
+            moodAnalysis.text("Neutral")
+            }
+            if(data.score_tag == "N"){
+                moodAnalysis.text("Negative")
+                }
+                if(data.score_tag == "N+"){
+                    moodAnalysis.text("Very Negative")
+                    }
+                    else
+                    moodAnalysis.text("Inconclusive analysis")
+    })
+});
+// P+: strong positive
+// P: positive
+// NEU: neutral
+// N: negative
+// N+: strong negative
+// NONE: without polarity
 
 // Populate recommendation section
 var getRecommendations = function (search) {
@@ -177,10 +217,10 @@ var getRecommendations = function (search) {
         // to conduct a new search
         for (let i = 0; i < 8; i++) {
             var rec = $("<button></button>").addClass("column").text(res.Similar.Results[i].Name).css("padding", "5px");
-            rec.on('click', function() {
-                    var artist = $(this).text();
-                    // console.log(artist, typeof(artist));
-                    beginSearch(artist);
+            rec.on('click', function () {
+                var artist = $(this).text();
+                // console.log(artist, typeof(artist));
+                beginSearch(artist);
             });
             recommended.append(rec);
         }
