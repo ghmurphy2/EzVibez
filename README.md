@@ -59,12 +59,12 @@ Taste Dive
 
 Meaning cloud API Code snippets
 
-![Image](./assets/img/meaningful.png)
+![Image](./assets/img/meaningful.png)  
 Function to pull text polarity
 
 ## Summary
 
-- EzVibez is an app that allows users to vizualize song lyrics and there analyized sentiment. It also feature interactive effects that mimic the mood of the song and a list of suggested songs based on the Tastedive Api. 
+- EzVibez is an app that allows users to vizualize song lyrics and there analyized sentiment. It also feature interactive effects that mimic the mood of the song and a list of suggested songs based on the Tastedive Api. Our app features several user stories: a user wanting to see the lyrics of a song, a user wanting to know the general mood of a song, a user wanting to save their search history, and a user wanting to be presented with similar songs/artists.
 
 About API's
 
