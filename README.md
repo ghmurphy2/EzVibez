@@ -34,9 +34,9 @@ https://ghmurphy2.github.io/EzVibez/
 
 - EzVibez was built with Foundation, Particle js, Lyrics.ovh , Tastedive, and Meaningcloud. Our site queries multiple apis in order to deliver lyrics and a polarity analysis for them. Our users will be able to view the lyrics on a dynamic and fun website which will offer artist recommendations and a search history saved in lcoal storage. The site is populated through Javascript to display lyrics in their entirety with a mood analysis. 
 
-CODE HIGHLIGHTS
+### CODE HIGHLIGHTS
 
-Lyrics.ovh
+#### Lyrics.ovh
 
 ```
 async function beginSearch(searchValue) {
@@ -115,7 +115,7 @@ async function getLyrics(artist, songTitle) {
 ![](./assets/img/codehighlight2.gif)
 
 
-Taste Dive 
+#### TasteDive 
 
 ```
 // Populate recommendation section
@@ -153,12 +153,7 @@ var getRecommendations = function (search) {
 }
 ```
 
-
-
-
-
-
-Meaning cloud API Code snippets  
+#### Meaning cloud API Code snippets  
 
 Function to pull text polarity
 ```
