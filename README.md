@@ -228,9 +228,11 @@ About API's
 
 ## Authors
 
-- Gabriel Lantin
-- Umera Malek
-- Gavin Murphy
+First Header  | Second Header
+------------- | -------------
+Gabriel Lantin  | (https://github.com/mushymane)
+Umera Malek  | (https://github.com/umeramalek)
+Gavin Murphy  | (https://github.com/ghmurphy2)
 
 ## License
 
