@@ -228,7 +228,7 @@ About API's
 
 ## Authors
 
-First Header  | Second Header
+Team Member  | Github
 ------------- | -------------
 Gabriel Lantin  | (https://github.com/mushymane)
 Umera Malek  | (https://github.com/umeramalek)
